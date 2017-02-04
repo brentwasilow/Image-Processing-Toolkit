@@ -42,7 +42,7 @@ public class Driver {
 		int alpha = 3;
 
 		// grab lookup table from the original image for histogram EQ
-		int[] lookup = Project1Functions.histogramEqualization(originalImage);
+		int[] lookup = ImageProcessingFunctions1.histogramEqualization(originalImage);
 
 		// create gaussian kernel based on kernel size
 		double[][] gaussian = Utility.getGaussianKernel(kernel, omega);
@@ -57,17 +57,17 @@ public class Driver {
 
 			// perform compression tests - RLE - LZW - DPCM - Huffman
 			if (operation.equals("RLE")) {
-				Project3Functions.RLE(originalImage);
+				ImageProcessingFunctions3.RLE(originalImage);
 				continue;
 			} else if (operation.equals("LZW")) {
-				Project3Functions.LZW(originalImage);
+				ImageProcessingFunctions3.LZW(originalImage);
 				continue;
 			} else if (operation.equals("DPCM")) {
-				Project3Functions.DPCM(originalImage);
+				ImageProcessingFunctions3.DPCM(originalImage);
 				continue;
 			} else if (operation.equals("Huffman")) {
 				// unfinished
-				//Project3Functions.Huffman(originalImage);
+				//ImageProcessingFunctions3.Huffman(originalImage);
 				continue;
 			}
 
@@ -84,15 +84,15 @@ public class Driver {
 					switch (operation) {
 					case "resolution":
 						// perform bit level resolution operation
-						modifiedGray = Project1Functions.newGrayLevelResolution(gray, bitResolution);
+						modifiedGray = ImageProcessingFunctions1.newGrayLevelResolution(gray, bitResolution);
 						break;
 					case "log":
 						// perform log transformation
-						modifiedGray = Project1Functions.logTransformation(gray, logFactor);
+						modifiedGray = ImageProcessingFunctions1.logTransformation(gray, logFactor);
 						break;
 					case "power":
 						// perform power transformation
-						modifiedGray = Project1Functions.powerTransformation(gray, gamma);
+						modifiedGray = ImageProcessingFunctions1.powerTransformation(gray, gamma);
 						break;
 					case "histogram":
 						// perform histogram equalization;
@@ -100,51 +100,51 @@ public class Driver {
 						break;
 					case "arithmetic":
 						// perform arithmetic mean
-						modifiedGray = Project2Functions.arithmeticMean(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.arithmeticMean(originalImage, x, y, kernel);
 						break;
 					case "geometric":
 						// perform geometric mean
-						modifiedGray = Project2Functions.geometricMean(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.geometricMean(originalImage, x, y, kernel);
 						break;
 					case "harmonic":
 						// perform harmonic mean
-						modifiedGray = Project2Functions.harmonicMean(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.harmonicMean(originalImage, x, y, kernel);
 						break;
 					case "contraharmonic":
 						// perform contraharmonic mean
-						modifiedGray = Project2Functions.contraHarmonicMean(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.contraHarmonicMean(originalImage, x, y, kernel);
 						break;
 					case "max":
 						// perform max
-						modifiedGray = Project2Functions.max(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.max(originalImage, x, y, kernel);
 						break;
 					case "min":
 						// perform min
-						modifiedGray = Project2Functions.min(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.min(originalImage, x, y, kernel);
 						break;
 					case "midpoint":
 						// perform midpoint
-						modifiedGray = Project2Functions.midpoint(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.midpoint(originalImage, x, y, kernel);
 						break;
 					case "median":
 						// perform median
-						modifiedGray = Project2Functions.median(originalImage, x, y, kernel);
+						modifiedGray = ImageProcessingFunctions2.median(originalImage, x, y, kernel);
 						break;
 					case "alpha":
 						// perform alpha-trimmed
-						modifiedGray = Project2Functions.alphaTrimmed(originalImage, x, y, kernel, alpha);
+						modifiedGray = ImageProcessingFunctions2.alphaTrimmed(originalImage, x, y, kernel, alpha);
 						break;
 					case "gaussian":
 						// perform smoothing
-						modifiedGray = Project2Functions.gaussianSmoothing(originalImage, x, y, gaussian);
+						modifiedGray = ImageProcessingFunctions2.gaussianSmoothing(originalImage, x, y, gaussian);
 						break;
 					case "laplace":
 						// perform sharpening
-						modifiedGray = Project2Functions.laplacianSharpening(originalImage, x, y, laplacian);
+						modifiedGray = ImageProcessingFunctions2.laplacianSharpening(originalImage, x, y, laplacian);
 						break;
 					case "planes":
 						// remove bit planes
-						modifiedGray = Project2Functions.removeBitPlanes(gray, planes);
+						modifiedGray = ImageProcessingFunctions2.removeBitPlanes(gray, planes);
 						break;
 					}
 					// grab new color for modified gray value
